@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SPA</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script> 
+</head>
+
+<body>
+
+<div class="mermaid">
+    sequenceDiagram
+    participant User
+    participant Browser
+    participant Server
+  
+    User->>Browser: Load SPA HTML
+    Browser-->>Server: GET https://studies.cs.helsinki.fi/exampleapp/spa
+    Note left of Server: Sends HTML file <br>along with <br> associated CSS <br> and JS 
+    Server-->>Browser: HTML, CSS and JS files
+    Browser-->>Browser: Render HTML, <br>apply CSS and <br>execute JS code 
+    Browser-->>Server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    Server-->>Browser: JSON files
+    Browser-->>Browser: Update UI and render notes
+    Browser-->>User: Display the rendered page
+</div>
+
+<script>
+  mermaid.initialize({startOnLoad: true});
+  mermaid.init(undefined, document.getElementsByClassName("mermaid"));
+  mermaid.render();  
+</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SPA with New Note</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script> 
+</head>
+
+<body>
+
+<div class="mermaid">
+    sequenceDiagram
+    participant User
+    participant Browser
+    participant Server
+  
+    User->>Browser: Load SPA HTML
+    Browser-->>Server: GET https://studies.cs.helsinki.fi/exampleapp/spa
+    Note left of Server: Sends HTML file <br>along with <br> associated CSS <br> and JS 
+    Server-->>Browser: HTML, CSS and JS files
+    Browser-->>Browser: Render HTML, <br>apply CSS and <br>execute JS code 
+    Browser-->>Server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    Server-->>Browser: JSON files
+    Browser-->>Browser: Update UI and render notes
+    Browser-->>User: Display the rendered page
+    User-->>Browser: Enter Input and Submit
+    Browser-->>Server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa <br>with JSON note data
+    Note left of Server:JSON data: <br>{<br>  content: "single page app does <br> not reload the whole page",<br>date: "2019-05-25T15:15:59.905Z"<br>}
+    Server-->>Browser: Response with status 201
+    note right of Browser: Form Handling is done<br> by browser side. <br>So,the browser <br>doesn't reload. 
+    Browser-->>Browser: Update UI and render 
+    Browser-->>User: Display rendered page
+
+</div>
+
+<script>
+  mermaid.initialize({startOnLoad: true});
+  mermaid.init(undefined, document.getElementsByClassName("mermaid"));
+  mermaid.render();  
+</script>
+
+</body>
+</html>

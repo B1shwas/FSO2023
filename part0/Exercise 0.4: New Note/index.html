@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>New Note</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script> 
+</head>
+
+<body>
+
+<div class="mermaid">
+
+sequenceDiagram
+  participant User
+  participant Browser
+  participant Server
+  
+  Browser-->>Server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+  Server-->>Browser: HTML Document
+  Browser-->>Browser: Render HTML
+  Browser-->>Server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+  Server-->>Browser: CSS file
+  Browser-->>Browser: Apply CSS styles
+  Browser-->>Server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+  Server-->>Browser: JS file
+  Browser-->>Browser: Execute JS code 
+  Browser-->>Server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+  Server-->>Browser: JSON files
+  Browser-->>Browser: Render notes
+  Browser-->>User: Display rendered website
+  User-->>Browser: Input and Submit
+  Browser-->>Server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
+  Note left of Server: Adds input<br>to notes
+  Server-->>Browser: Responds with<br>HTTP status code 302
+  Note right of Browser:Browser<br>Reloads
+  Browser-->>Server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+  Server-->>Browser: HTML Document
+  Browser-->>Browser: Render HTML
+  Browser-->>Server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+  Server-->>Browser: CSS file
+  Browser-->>Browser: Apply CSS styles
+  Browser-->>Server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+  Server-->>Browser: JS file
+  Browser-->>Browser: Execute JS code 
+  Note right of Browser: JS code fetches<br>the JSON<br>from the server
+  
+  Browser-->>Server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+  Server-->>Browser: JSON files<br>with user<br>input added
+  
+  Note right of Browser: The browser<br>executes the<br>callback function
+  Browser-->>Browser:Renders notes
+  Browser-->>User: Display rendered website
+
+</div>
+
+<script>
+  mermaid.initialize({startOnLoad: true});
+  mermaid.init(undefined, document.getElementsByClassName("mermaid"));
+  mermaid.render();  
+</script>
+
+</body>
+</html>
