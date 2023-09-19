@@ -25,6 +25,11 @@ const Unicafe = () => {
         setReviews(updatedReviews)
         console.log(updatedReviews.bad)
     }
+    const resetZero = () => {
+        const updatedZero = {...reviews, bad: 0, good: 0, neutral: 0}
+        setReviews(updatedZero)
+        
+    }
 
 
 
@@ -35,6 +40,7 @@ const Unicafe = () => {
         <Button text='good' handleClick={handleGoodClick}/>
         <Button text='neutral' handleClick={handleNeutralClick}/>
         <Button text='bad' handleClick={handleBadClick}/>
+        <Button text='reset' handleClick={resetZero}/>
         <Header title='Statistics'/>
         <Statistics reviews = {reviews}/>
         
