@@ -46,7 +46,7 @@ const Anecdotes = () => {
         <Button text='Vote' handleClick={handleVote}/>
         <Button text='Next Anecdotes' handleClick={handleNext}/>
         <h3>Anecdote with most votes</h3>
-        <Anecdote anecdotes={anecdotes} selected={maxVotesIndex} votes={maxVotes}/>
+        <Anecdote anecdotes={anecdotes} selected={maxVotesIndex} votes={votes}/>
 
         </>
       )
