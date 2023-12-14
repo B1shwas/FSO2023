@@ -1,19 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'
+
 
 import { AddContact, Filter, SubmitBut, Name } from './components';
 
 export const Page = () => {
-  const [persons, setPersons] = useState([
-    {
-      name: 'Arto Hellas',
-      id: 1,
-      contact: '0-12034-421',
-    }
-  ]);
+  const [persons, setPersons] = useState([]);
 
   const [newPerson, setNewPerson] = useState('');
   const [newContact, setNewContact] = useState('');
   const [search, setSearch] = useState('')
+
+  const hook = () => {
+    axios.get('http://localhost:3001/persons').
+    then((response) => {
+      setPersons(response.data)
+    })
+  }
+
+  useEffect(hook, [])
 
   const handleSubmit = (event) => {
     event.preventDefault();

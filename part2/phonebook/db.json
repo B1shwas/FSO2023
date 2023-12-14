@@ -1,0 +1,24 @@
+{
+    "persons": [
+        {
+            "name": "Lionel Messi",
+            "contact": "01-3443593",
+            "id": 1
+        },
+        {
+            "name": "Cristiano Ronaldo",
+            "contact": "91-464323",
+            "id": 2
+        },
+        {
+            "name": "Ivan Rakitic",
+            "contact": "47-6842959",
+            "id": 3
+        },
+        {
+            "name": "Ronald Araujo",
+            "contact": "03-4932967",
+            "id": 4
+        }
+    ]
+}
